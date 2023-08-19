@@ -6,7 +6,7 @@ load A;
 %load C;
 GKT=xlsread('各卡车路段行程时间.xlsx');
 popsize= 50;                  % 种群规模
-maxgen= 600;                   % 最大迭代次数
+maxgen= 1000;                   % 最大迭代次数
 citysize=82;        % 任务总数
 TJ=3;               %间隔时间
 p= ones(citysize, citysize);   % 概率矩阵
