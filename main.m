@@ -4,19 +4,19 @@ close all;
 load A;
 %load B;
 %load C;
-GKT=xlsread('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½Ð³ï¿½Ê±ï¿½ï¿½.xlsx');
-popsize= 500;                  % ï¿½ï¿½Èºï¿½ï¿½Ä£
-maxgen= 1000;                   % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-citysize=82;        % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-TJ=3;               %ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
-p= ones(citysize, citysize);   % ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
-sn= ceil(popsize * 0.5);       % ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½ï¿½Ä£
-bestlists= zeros(maxgen, citysize);    % ï¿½ï¿½Â¼Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Å½ï¿½
-bestfits= zeros(1, maxgen);            % ï¿½ï¿½Â¼Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Å½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµ
-avgfits= zeros(1, maxgen);% ï¿½ï¿½Â¼Ã¿ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµ
+GKT=xlsread('¸÷¿¨³µÂ·¶ÎÐÐ³ÌÊ±¼ä.xlsx');
+popsize= 50;                  % ÖÖÈº¹æÄ£
+maxgen= 1000;                   % ×î´óµü´ú´ÎÊý
+citysize=82;        % ÈÎÎñ×ÜÊý
+TJ=3;               %¼ä¸ôÊ±¼ä
+p= ones(citysize, citysize);   % ¸ÅÂÊ¾ØÕó
+sn= ceil(popsize * 0.5);       % ÓÅÊÆÈºÌå¹æÄ£
+bestlists= zeros(maxgen, citysize);    % ¼ÇÂ¼Ã¿´ú×îÓÅ½â
+bestfits= zeros(1, maxgen);            % ¼ÇÂ¼Ã¿´ú×îÓÅ½âÊÊÓ¦¶ÈÖµ
+avgfits= zeros(1, maxgen);% ¼ÇÂ¼Ã¿´úÆ½¾ùÊÊÓ¦¶ÈÖµ
 bfit1=100;
 for gen =1:maxgen
-    pop = makepop(popsize, citysize, p);    % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èº
+    pop = makepop(popsize, citysize, p);    % ÖÆ×÷ÖÖÈº
     [fitness, lenjz]= callength(pop,popsize,A,GKT,TJ);
     [bfit, bfiti] = min(fitness);
     if bfit<bfit1
@@ -27,8 +27,8 @@ for gen =1:maxgen
     bestlists(gen, :) = Dbest;
     bestfits(1, gen) = bfit1;
     avgfits(1, gen) = sum(fitness) / popsize;
-    spop = selection(pop, sn, fitness);     % Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½
-    p = makep(spop);                        % ï¿½ï¿½ï¿½Â¸ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+    spop = selection(pop, sn, fitness);     % Ñ¡ÔñÓÅÊÆÈºÌå
+    p = makep(spop);                        % ¸üÐÂ¸ÅÂÊ¾ØÕó
 end
 Zuiyoujie=bestlists(end,:);
 
@@ -36,10 +36,10 @@ FIT=bestfits*2.5;
 FIT=FIT';
 figure
 plot(bestfits,'-b');
-title('ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨ï¿½Å»ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
-xlabel('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
+title('·Ö²¼¹À¼ÆËã·¨ÓÅ»¯ÊÊÓ¦¶ÈÇúÏß');
+xlabel('µü´ú´ÎÊý');
 ylabel('Fitness value/min');
 %[fitness,lenjz] =callength(bestlists,popsize,A,B,C);
 
 %[bfit, bfiti]= min(fitness);
-%fprintf("ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½:%f\n", bfit);
+%fprintf("×î¶Ì¾àÀë:%f\n", bfit);
